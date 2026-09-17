@@ -2,120 +2,331 @@
 <html lang="ku" dir="rtl">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Oil Company System</title>
+
 <style>
-*{box-sizing:border-box}body{margin:0;font-family:Arial,Tahoma;background:#f3f6f9;color:#172033}
-header{background:#092033;color:white;padding:15px;display:flex;justify-content:space-between;align-items:center}
-button{border:0;border-radius:9px;padding:11px 15px;font-weight:bold;cursor:pointer}
-.lang{background:white;color:#092033}.logout,.del{background:#c0392b;color:white}
-.container{max-width:900px;margin:auto;padding:18px}.login{max-width:400px;margin:60px auto;background:white;padding:25px;border-radius:18px}
-input{width:100%;padding:12px;margin:7px 0 14px;border:1px solid #ccd6df;border-radius:9px;font-size:16px}
-.primary{background:#087653;color:white;width:100%}.hero{background:linear-gradient(135deg,#092033,#087653);color:white;padding:25px;border-radius:17px;margin-bottom:18px}
-nav{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px}nav button{background:white;border:1px solid #ddd}nav button.active{background:#087653;color:white}
-section{display:none}section.active{display:block}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:15px}
-.card{background:white;padding:18px;border-radius:15px;margin-bottom:15px;box-shadow:0 3px 12px #0001}.stat{font-size:30px;color:#087653;font-weight:bold}
-table{width:100%;border-collapse:collapse}th,td{padding:10px;border-bottom:1px solid #eee;text-align:right}th{background:#eef5f2}
-.error{color:#c0392b;text-align:center}#app{display:none}footer{text-align:center;padding:20px;color:#777}
+*{
+  box-sizing:border-box;
+}
+
+body{
+  margin:0;
+  font-family:Arial,Tahoma,sans-serif;
+  background:#f3f6f8;
+  color:#17212b;
+}
+
+header{
+  background:#092033;
+  color:white;
+  padding:20px;
+  text-align:center;
+}
+
+header h1{
+  margin:0 0 8px;
+  font-size:28px;
+}
+
+header p{
+  margin:0;
+  opacity:.8;
+}
+
+.container{
+  max-width:1100px;
+  margin:auto;
+  padding:20px;
+}
+
+.cards{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:15px;
+  margin-bottom:20px;
+}
+
+.card{
+  background:white;
+  padding:20px;
+  border-radius:14px;
+  box-shadow:0 3px 12px #0001;
+  text-align:center;
+}
+
+.card h2{
+  margin:5px 0;
+  color:#092033;
+}
+
+.card p{
+  margin:0;
+  color:#777;
+}
+
+.panel{
+  background:white;
+  padding:20px;
+  border-radius:14px;
+  box-shadow:0 3px 12px #0001;
+  margin-bottom:20px;
+}
+
+.panel h2{
+  margin-top:0;
+  color:#092033;
+}
+
+form{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:12px;
+}
+
+input,select,button{
+  width:100%;
+  padding:13px;
+  border-radius:9px;
+  border:1px solid #ddd;
+  font-size:16px;
+}
+
+button{
+  background:#092033;
+  color:white;
+  border:0;
+  cursor:pointer;
+}
+
+button:hover{
+  background:#123b5a;
+}
+
+table{
+  width:100%;
+  border-collapse:collapse;
+  margin-top:15px;
+}
+
+th,td{
+  padding:12px;
+  border-bottom:1px solid #eee;
+  text-align:center;
+}
+
+th{
+  background:#092033;
+  color:white;
+}
+
+.delete{
+  background:#c62828;
+  padding:8px;
+}
+
+@media(max-width:700px){
+  .cards{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  form{
+    grid-template-columns:1fr;
+  }
+
+  table{
+    font-size:13px;
+  }
+
+  .container{
+    padding:12px;
+  }
+}
 </style>
 </head>
+
 <body>
 
-<div id="loginPage">
-<header><b>Oil Company System</b><button class="lang" onclick="language()">English / کوردی</button></header>
-<div class="login">
-<h2 id="lt">چوونەژوورەوە</h2>
-<label id="ut">ناوی بەکارهێنەر</label>
-<input id="user" placeholder="admin">
-<label id="pt">وشەی نهێنی</label>
-<input id="pass" type="password" placeholder="1234">
-<button class="primary" onclick="login()" id="lb">چوونەژوورەوە</button>
-<p class="error" id="err"></p>
-</div>
-</div>
-
-<div id="app">
 <header>
-<b>Oil Company System</b>
-<div><button class="lang" onclick="language()">English / کوردی</button> <button class="logout" onclick="logout()" id="lo">دەرچوون</button></div>
+  <h1>🏢 سیستەمی کۆمپانیای نەوت</h1>
+  <p>Oil Company Management System</p>
 </header>
 
 <div class="container">
-<div class="hero"><h2 id="welcome">بەخێربێیت بۆ کۆمپانیای نەوت</h2><p id="sub">سیستەمی بەڕێوەبردنی کۆمپانیا</p></div>
 
-<nav>
-<button class="active" onclick="show('dash',this)" data-ku="داشبۆرد" data-en="Dashboard">داشبۆرد</button>
-<button onclick="show('emp',this)" data-ku="کارمەندان" data-en="Employees">کارمەندان</button>
-<button onclick="show('pro',this)" data-ku="بەرهەمەکان" data-en="Products">بەرهەمەکان</button>
-<button onclick="show('sale',this)" data-ku="فرۆشتن" data-en="Sales">فرۆشتن</button>
-</nav>
+  <div class="cards">
+    <div class="card">
+      <h2 id="totalEmployees">0</h2>
+      <p>کارمەندان</p>
+    </div>
 
-<section id="dash" class="active">
-<div class="grid">
-<div class="card"><h3 data-ku="کارمەندان" data-en="Employees">کارمەندان</h3><div class="stat" id="ec">0</div></div>
-<div class="card"><h3 data-ku="بەرهەمەکان" data-en="Products">بەرهەمەکان</h3><div class="stat" id="pc">0</div></div>
-<div class="card"><h3 data-ku="فرۆشتن" data-en="Sales">فرۆشتن</h3><div class="stat" id="sc">0</div></div>
-</div>
-</section>
+    <div class="card">
+      <h2 id="totalVehicles">0</h2>
+      <p>ئۆتۆمبێلەکان</p>
+    </div>
 
-<section id="emp">
-<div class="card">
-<h2 data-ku="زیادکردنی کارمەند" data-en="Add Employee">زیادکردنی کارمەند</h2>
-<input id="en" placeholder="ناو"><input id="ep" placeholder="پۆست">
-<button class="primary" onclick="addE()" data-ku="زیادکردن" data-en="Add">زیادکردن</button>
-</div>
-<div class="card"><table><thead><tr><th>ناو</th><th>پۆست</th><th>✕</th></tr></thead><tbody id="et"></tbody></table></div>
-</section>
+    <div class="card">
+      <h2 id="totalFuel">0</h2>
+      <p>کۆی لیتر</p>
+    </div>
 
-<section id="pro">
-<div class="card">
-<h2 data-ku="زیادکردنی بەرهەم" data-en="Add Product">زیادکردنی بەرهەم</h2>
-<input id="pn" placeholder="ناوی بەرهەم"><input id="pq" type="number" placeholder="بڕ">
-<button class="primary" onclick="addP()" data-ku="زیادکردن" data-en="Add">زیادکردن</button>
-</div>
-<div class="card"><table><thead><tr><th>بەرهەم</th><th>بڕ</th><th>✕</th></tr></thead><tbody id="pt"></tbody></table></div>
-</section>
+    <div class="card">
+      <h2 id="totalRecords">0</h2>
+      <p>تۆمارەکان</p>
+    </div>
+  </div>
 
-<section id="sale">
-<div class="card">
-<h2 data-ku="تۆمارکردنی فرۆشتن" data-en="Record Sale">تۆمارکردنی فرۆشتن</h2>
-<input id="cu" placeholder="کڕیار"><input id="sp" placeholder="بەرهەم">
-<input id="sq" type="number" placeholder="بڕ"><input id="pr" type="number" placeholder="نرخ">
-<button class="primary" onclick="addS()" data-ku="تۆمارکردن" data-en="Save Sale">تۆمارکردن</button>
-</div>
-<div class="card"><table><thead><tr><th>کڕیار</th><th>بەرهەم</th><th>کۆ</th><th>✕</th></tr></thead><tbody id="st"></tbody></table></div>
-</section>
-</div>
-<footer>Oil Company System © 2026</footer>
+  <div class="panel">
+    <h2>➕ زیادکردنی تۆمار</h2>
+
+    <form id="recordForm">
+
+      <input
+        type="text"
+        id="name"
+        placeholder="ناوی کارمەند"
+        required
+      >
+
+      <input
+        type="text"
+        id="vehicle"
+        placeholder="ژمارەی ئۆتۆمبێل"
+        required
+      >
+
+      <input
+        type="number"
+        id="fuel"
+        placeholder="بڕی نەوت بە لیتر"
+        min="0"
+        required
+      >
+
+      <select id="type">
+        <option value="Diesel">Diesel</option>
+        <option value="Petrol">Petrol</option>
+        <option value="Oil">Oil</option>
+      </select>
+
+      <button type="submit">
+        زیادکردنی تۆمار
+      </button>
+
+    </form>
+  </div>
+
+  <div class="panel">
+    <h2>📋 لیستی تۆمارەکان</h2>
+
+    <table>
+      <thead>
+        <tr>
+          <th>ناو</th>
+          <th>ئۆتۆمبێل</th>
+          <th>جۆر</th>
+          <th>لیتر</th>
+          <th>کردار</th>
+        </tr>
+      </thead>
+
+      <tbody id="records"></tbody>
+    </table>
+  </div>
+
 </div>
 
 <script>
-let lang=localStorage.lang||'ku';
-let E=JSON.parse(localStorage.E||'[]'),P=JSON.parse(localStorage.P||'[]'),S=JSON.parse(localStorage.S||'[]');
 
-function login(){
-if(user.value==='admin'&&pass.value==='1234'){
-loginPage.style.display='none';app.style.display='block';err.innerText=''
-}else err.innerText=lang==='ku'?'ناوی بەکارهێنەر یان وشەی نهێنی هەڵەیە':'Wrong username or password'
+let records = JSON.parse(
+  localStorage.getItem("oilRecords") || "[]"
+);
+
+function save(){
+  localStorage.setItem(
+    "oilRecords",
+    JSON.stringify(records)
+  );
 }
-function logout(){app.style.display='none';loginPage.style.display='block'}
-function save(){localStorage.E=JSON.stringify(E);localStorage.P=JSON.stringify(P);localStorage.S=JSON.stringify(S)}
-function render(){
-ec.innerText=E.length;pc.innerText=P.length;sc.innerText=S.length;
-et.innerHTML=E.map((x,i)=>`<tr><td>${x.n}</td><td>${x.p}</td><td><button class="del" onclick="E.splice(${i},1);save();render()">✕</button></td></tr>`).join('');
-pt.innerHTML=P.map((x,i)=>`<tr><td>${x.n}</td><td>${x.q}</td><td><button class="del" onclick="P.splice(${i},1);save();render()">✕</button></td></tr>`).join('');
-st.innerHTML=S.map((x,i)=>`<tr><td>${x.c}</td><td>${x.p}</td><td>${x.t}</td><td><button class="del" onclick="S.splice(${i},1);save();render()">✕</button></td></tr>`).join('')
+
+function display(){
+
+  const table = document.getElementById("records");
+
+  table.innerHTML = "";
+
+  let fuel = 0;
+  let vehicles = new Set();
+
+  records.forEach((record,index)=>{
+
+    fuel += Number(record.fuel);
+    vehicles.add(record.vehicle);
+
+    table.innerHTML += `
+      <tr>
+        <td>${record.name}</td>
+        <td>${record.vehicle}</td>
+        <td>${record.type}</td>
+        <td>${record.fuel}</td>
+        <td>
+          <button
+            class="delete"
+            onclick="deleteRecord(${index})">
+            سڕینەوە
+          </button>
+        </td>
+      </tr>
+    `;
+  });
+
+  document.getElementById("totalEmployees").textContent =
+    new Set(records.map(x=>x.name)).size;
+
+  document.getElementById("totalVehicles").textContent =
+    vehicles.size;
+
+  document.getElementById("totalFuel").textContent =
+    fuel;
+
+  document.getElementById("totalRecords").textContent =
+    records.length;
 }
-function addE(){if(!en.value)return alert('ناو بنووسە');E.push({n:en.value,p:ep.value});en.value='';ep.value='';save();render()}
-function addP(){if(!pn.value)return alert('ناوی بەرهەم بنووسە');P.push({n:pn.value,q:pq.value});pn.value='';pq.value='';save();render()}
-function addS(){let q=Number(sq.value),r=Number(pr.value);if(!cu.value||!sp.value)return alert('زانیارییەکان پڕبکەرەوە');S.push({c:cu.value,p:sp.value,t:q*r});cu.value='';sp.value='';sq.value='';pr.value='';save();render()}
-function show(id,b){document.querySelectorAll('section').forEach(x=>x.classList.remove('active'));document.getElementById(id).classList.add('active');document.querySelectorAll('nav button').forEach(x=>x.classList.remove('active'));b.classList.add('active')}
-function language(){
-lang=lang==='ku'?'en':'ku';localStorage.lang=lang;document.documentElement.dir=lang==='ku'?'rtl':'ltr';
-document.querySelectorAll('[data-ku]').forEach(x=>x.innerText=lang==='ku'?x.dataset.ku:x.dataset.en);
-lt.innerText=lang==='ku'?'چوونەژوورەوە':'Login';ut.innerText=lang==='ku'?'ناوی بەکارهێنەر':'Username';pt.innerText=lang==='ku'?'وشەی نهێنی':'Password';lb.innerText=lang==='ku'?'چوونەژوورەوە':'Login';lo.innerText=lang==='ku'?'دەرچوون':'Logout';welcome.innerText=lang==='ku'?'بەخێربێیت بۆ کۆمپانیای نەوت':'Welcome to Oil Company System';sub.innerText=lang==='ku'?'سیستەمی بەڕێوەبردنی کۆمپانیا':'Company Management System'
+
+document.getElementById("recordForm").addEventListener(
+  "submit",
+  function(e){
+
+    e.preventDefault();
+
+    records.push({
+      name:document.getElementById("name").value,
+      vehicle:document.getElementById("vehicle").value,
+      fuel:document.getElementById("fuel").value,
+      type:document.getElementById("type").value
+    });
+
+    save();
+    display();
+
+    this.reset();
+  }
+);
+
+function deleteRecord(index){
+
+  if(confirm("دڵنیایت لە سڕینەوەی ئەم تۆمارە؟")){
+
+    records.splice(index,1);
+
+    save();
+    display();
+  }
 }
-render();language();language();
+
+display();
+
 </script>
+
 </body>
 </html>
