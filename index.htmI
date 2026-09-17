@@ -3,11 +3,84 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>سیستەمی کۆمپانیای ڕۆن</title>
+  <title>Login - کۆمپانیای ڕۆن</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f2f4f7;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+    }
+
+    .login-box {
+      background: white;
+      width: 85%;
+      max-width: 380px;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+      text-align: center;
+    }
+
+    input {
+      width: 100%;
+      box-sizing: border-box;
+      padding: 14px;
+      margin: 8px 0;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 16px;
+    }
+
+    button {
+      width: 100%;
+      padding: 14px;
+      margin-top: 15px;
+      border: none;
+      border-radius: 8px;
+      background: #222;
+      color: white;
+      font-size: 17px;
+    }
+
+    #message {
+      margin-top: 15px;
+      color: red;
+    }
+  </style>
 </head>
 
 <body>
-  <h1>سیستەمی کۆمپانیای ڕۆن</h1>
-  <p>بەخێربێیت</p>
+
+  <div class="login-box">
+    <h1>کۆمپانیای ڕۆن</h1>
+
+    <input type="text" id="username" placeholder="ناوی بەکارهێنەر">
+
+    <input type="password" id="password" placeholder="وشەی نهێنی">
+
+    <button onclick="login()">چوونە ژوورەوە</button>
+
+    <div id="message"></div>
+  </div>
+
+  <script>
+    function login() {
+      const username = document.getElementById("username").value;
+      const password = document.getElementById("password").value;
+
+      if (username === "admin" && password === "1234") {
+        alert("بەخێربێیت");
+      } else {
+        document.getElementById("message").innerText =
+          "ناوی بەکارهێنەر یان وشەی نهێنی هەڵەیە";
+      }
+    }
+  </script>
+
 </body>
 </html>
