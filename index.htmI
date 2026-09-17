@@ -1,86 +1,85 @@
 <!DOCTYPE html>
-<html lang="ku">
+<html lang="ku" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Login - کۆمپانیای ڕۆن</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Oil Company System</title>
 
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: #f2f4f7;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh;
-      margin: 0;
-    }
+<style>
+*{box-sizing:border-box}
 
-    .login-box {
-      background: white;
-      width: 85%;
-      max-width: 380px;
-      padding: 30px;
-      border-radius: 15px;
-      box-shadow: 0 5px 20px rgba(0,0,0,0.15);
-      text-align: center;
-    }
+body{
+margin:0;
+font-family:Arial,Tahoma,sans-serif;
+background:#f4f7fb;
+color:#172033;
+}
 
-    input {
-      width: 100%;
-      box-sizing: border-box;
-      padding: 14px;
-      margin: 8px 0;
-      border: 1px solid #ccc;
-      border-radius: 8px;
-      font-size: 16px;
-    }
+header{
+background:#0b1f33;
+color:white;
+padding:16px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+}
 
-    button {
-      width: 100%;
-      padding: 14px;
-      margin-top: 15px;
-      border: none;
-      border-radius: 8px;
-      background: #222;
-      color: white;
-      font-size: 17px;
-    }
+header h1{
+font-size:20px;
+margin:0;
+}
 
-    #message {
-      margin-top: 15px;
-      color: red;
-    }
-  </style>
-</head>
+button{
+border:0;
+border-radius:10px;
+padding:11px 16px;
+cursor:pointer;
+font-weight:bold;
+}
 
-<body>
+.lang{
+background:white;
+color:#123;
+}
 
-  <div class="login-box">
-    <h1>کۆمپانیای ڕۆن</h1>
+.container{
+max-width:1100px;
+margin:auto;
+padding:20px;
+}
 
-    <input type="text" id="username" placeholder="ناوی بەکارهێنەر">
+.login{
+max-width:400px;
+margin:80px auto;
+background:white;
+padding:30px;
+border-radius:18px;
+box-shadow:0 5px 25px #0002;
+}
 
-    <input type="password" id="password" placeholder="وشەی نهێنی">
+.login h2{
+text-align:center;
+}
 
-    <button onclick="login()">چوونە ژوورەوە</button>
+input,select{
+width:100%;
+padding:12px;
+border:1px solid #d4dee8;
+border-radius:10px;
+margin:7px 0 14px;
+font-size:15px;
+}
 
-    <div id="message"></div>
-  </div>
+.primary{
+background:#0c7658;
+color:white;
+width:100%;
+}
 
-  <script>
-    function login() {
-      const username = document.getElementById("username").value;
-      const password = document.getElementById("password").value;
+.logout{
+background:#c93c3c;
+color:white;
+}
 
-      if (username === "admin" && password === "1234") {
-        alert("بەخێربێیت");
-      } else {
-        document.getElementById("message").innerText =
-          "ناوی بەکارهێنەر یان وشەی نهێنی هەڵەیە";
-      }
-    }
-  </script>
-
-</body>
-</html>
+.hero{
+background:linear-gradient(135
