@@ -7,79 +7,70 @@
 
 <style>
 *{box-sizing:border-box}
-
 body{
 margin:0;
 font-family:Arial,Tahoma,sans-serif;
-background:#f4f7fb;
-color:#172033;
+background:#f3f6f9;
+color:#172033
 }
-
 header{
-background:#0b1f33;
+background:#092033;
 color:white;
-padding:16px;
+padding:15px;
 display:flex;
 justify-content:space-between;
-align-items:center;
+align-items:center
 }
-
-header h1{
-font-size:20px;
-margin:0;
-}
-
+header h1{font-size:19px;margin:0}
 button{
 border:0;
-border-radius:10px;
-padding:11px 16px;
-cursor:pointer;
+border-radius:9px;
+padding:11px 15px;
 font-weight:bold;
+cursor:pointer
 }
-
-.lang{
-background:white;
-color:#123;
-}
-
-.container{
-max-width:1100px;
-margin:auto;
-padding:20px;
-}
-
+.lang{background:white;color:#092033}
+.container{max-width:1000px;margin:auto;padding:18px}
 .login{
 max-width:400px;
-margin:80px auto;
+margin:70px auto;
 background:white;
-padding:30px;
+padding:25px;
 border-radius:18px;
-box-shadow:0 5px 25px #0002;
+box-shadow:0 4px 20px #0002
 }
-
-.login h2{
-text-align:center;
-}
-
-input,select{
+.login h2{text-align:center}
+input{
 width:100%;
 padding:12px;
-border:1px solid #d4dee8;
-border-radius:10px;
-margin:7px 0 14px;
-font-size:15px;
+margin:7px 0 15px;
+border:1px solid #ccd6df;
+border-radius:9px;
+font-size:16px
 }
-
 .primary{
-background:#0c7658;
+background:#087653;
 color:white;
-width:100%;
+width:100%
 }
-
-.logout{
-background:#c93c3c;
-color:white;
-}
-
+.logout{background:#c0392b;color:white}
 .hero{
-background:linear-gradient(135
+background:linear-gradient(135deg,#092033,#087653);
+color:white;
+padding:25px;
+border-radius:17px;
+margin-bottom:18px
+}
+.hero h2{margin:0 0 8px}
+nav{
+display:flex;
+gap:8px;
+flex-wrap:wrap;
+margin-bottom:18px
+}
+nav button{
+background:white;
+border:1px solid #ddd;
+color:#17324d
+}
+nav button.active
