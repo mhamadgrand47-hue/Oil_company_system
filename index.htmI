@@ -7,70 +7,55 @@
 
 <style>
 *{box-sizing:border-box}
-body{
-margin:0;
-font-family:Arial,Tahoma,sans-serif;
-background:#f3f6f9;
-color:#172033
-}
-header{
-background:#092033;
-color:white;
-padding:15px;
-display:flex;
-justify-content:space-between;
-align-items:center
-}
+body{margin:0;font-family:Arial,Tahoma,sans-serif;background:#f3f6f9;color:#172033}
+header{background:#092033;color:white;padding:15px;display:flex;justify-content:space-between;align-items:center}
 header h1{font-size:19px;margin:0}
-button{
-border:0;
-border-radius:9px;
-padding:11px 15px;
-font-weight:bold;
-cursor:pointer
-}
+button{border:0;border-radius:9px;padding:11px 15px;font-weight:bold;cursor:pointer}
 .lang{background:white;color:#092033}
 .container{max-width:1000px;margin:auto;padding:18px}
-.login{
-max-width:400px;
-margin:70px auto;
-background:white;
-padding:25px;
-border-radius:18px;
-box-shadow:0 4px 20px #0002
-}
+.login{max-width:400px;margin:70px auto;background:white;padding:25px;border-radius:18px;box-shadow:0 4px 20px #0002}
 .login h2{text-align:center}
-input{
-width:100%;
-padding:12px;
-margin:7px 0 15px;
-border:1px solid #ccd6df;
-border-radius:9px;
-font-size:16px
-}
-.primary{
-background:#087653;
-color:white;
-width:100%
-}
+input{width:100%;padding:12px;margin:7px 0 15px;border:1px solid #ccd6df;border-radius:9px;font-size:16px}
+.primary{background:#087653;color:white;width:100%}
 .logout{background:#c0392b;color:white}
-.hero{
-background:linear-gradient(135deg,#092033,#087653);
-color:white;
-padding:25px;
-border-radius:17px;
-margin-bottom:18px
-}
+.hero{background:linear-gradient(135deg,#092033,#087653);color:white;padding:25px;border-radius:17px;margin-bottom:18px}
 .hero h2{margin:0 0 8px}
-nav{
-display:flex;
-gap:8px;
-flex-wrap:wrap;
-margin-bottom:18px
-}
-nav button{
-background:white;
-border:1px solid #ddd;
-color:#17324d
-}
-nav button.active
+nav{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px}
+nav button{background:white;border:1px solid #ddd;color:#17324d}
+nav button.active{background:#087653;color:white}
+section{display:none}
+section.active{display:block}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:15px}
+.card{background:white;padding:20px;border-radius:15px;box-shadow:0 3px 12px #0001;margin-bottom:15px}
+.stat{font-size:30px;font-weight:bold;color:#087653}
+table{width:100%;border-collapse:collapse}
+th,td{padding:11px;border-bottom:1px solid #eee;text-align:right}
+th{background:#eef5f2}
+.danger{background:#c0392b;color:white}
+.error{color:#c0392b;text-align:center}
+#app{display:none}
+footer{text-align:center;padding:20px;color:#777}
+</style>
+</head>
+
+<body>
+
+<div id="loginPage">
+
+<header>
+<h1>Oil Company System</h1>
+<button class="lang" onclick="language()">English / کوردی</button>
+</header>
+
+<div class="login">
+
+<h2 id="loginTitle">چوونەژوورەوە</h2>
+
+<label id="userText">ناوی بەکارهێنەر</label>
+<input id="username" placeholder="admin">
+
+<label id="passText">وشەی نهێنی</label>
+<input id="password" type="password" placeholder="1234">
+
+<button class="primary" onclick="login()" id="loginBtn">
+چوونەژوورەوە
