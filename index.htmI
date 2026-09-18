@@ -239,7 +239,9 @@ th{
 <script>
 
 let records = JSON.parse(
-    localStorage.getItem("oilRecords") || "[]" || "[]"
+    localStorage.getItem("oilRecords") || "[]"
+
+
 );
 
 function save(){
